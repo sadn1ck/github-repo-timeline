@@ -36,7 +36,7 @@
       </div>
     </div>
     <div v-if="receiveddata">
-      <Profile />
+      <Profile :userdetails="userdetails" />
     </div>
   </div>
 </template>
