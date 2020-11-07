@@ -1,11 +1,11 @@
 <template>
-  <section class="text-gray-700 body-font">
+  <section class="text-gray-700 body-font py-16">
     <div
       v-for="(repo, i) in repodetails"
       :key="i"
-      class="container px-5 py-24 mx-auto flex flex-wrap"
+      class="container px-5 mx-auto flex flex-wrap"
     >
-      <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+      <div class="flex relative pb-10 sm:items-center">
         <div
           class="h-full w-6 absolute inset-0 flex items-center justify-center"
         >
@@ -19,22 +19,6 @@
         <div
           class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
         >
-          <div
-            class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-12 h-12"
-              viewBox="0 0 24 24"
-            >
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </div>
           <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
             <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
               <a :href="repodetails[i].html_url" target="_blank">
@@ -43,6 +27,9 @@
             </h2>
             <p class="leading-relaxed">
               {{ repodetails[i].description }}
+            </p>
+            <p class="py-2">
+              {{ new Date(repodetails[i].created_at).toString('dd-mm-YYYY') }}
             </p>
           </div>
         </div>
@@ -60,6 +47,9 @@ export default {
         return []
       },
     },
+  },
+  mounted() {
+    console.log(this.repodetails)
   },
 }
 </script>

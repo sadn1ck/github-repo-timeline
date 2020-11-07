@@ -2,29 +2,28 @@
   <div class="px-8 md:px-32 lg:px-64 pt-32 md:py-32 mx-auto">
     <div class="mb-4">
       <div class="force-center">
-        <label
-          class="block text-gray-700 text-2xl font-bold mb-2 p-5"
-          for="username"
-        >
-          GitHub Profile Visualizer
+        <label class="block text-4xl font-bold mb-2 p-5" for="username">
+          GitHub Repo Timeline
         </label>
       </div>
-      <div class="force-center p-5">
-        <input
-          v-model="username"
-          type="text"
-          class="relative outline-none py-5 px-5 rounded-xl w-full bg-white shadow focus:shadow-2xl text-base text-gray-700 placeholder-gray-400 focus:outline-none transition duration-200"
-          placeholder="Eg., torvalds"
-        />
-      </div>
-      <div class="force-center p-5">
-        <button
-          class="bg-gray-200 hover:bg-green-400 px-10 py-3 rounded transition duration-200 focus:outline-none shadow hover:shadow-2xl"
-          @click="submit"
-        >
-          Submit
-        </button>
-      </div>
+      <form action="" @submit.prevent="submit">
+        <div class="force-center p-5">
+          <input
+            v-model="username"
+            type="text"
+            class="relative outline-none text-gray-900 py-5 px-5 rounded-xl w-full shadow focus:shadow-2xl text-base focus:outline-none transition duration-200"
+            placeholder="Eg., torvalds"
+          />
+        </div>
+        <div class="force-center p-5">
+          <button
+            type="submit"
+            class="px-10 py-3 bg-gray-900 text-white hover:bg-green-500 rounded transition duration-200 focus:outline-none shadow hover:shadow-2xl"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
 
       <div v-if="invaliduser" class="force-center">
         <label
