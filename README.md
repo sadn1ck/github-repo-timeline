@@ -1,4 +1,4 @@
-# github-profile-visualizer
+# github-repo-timeline
 
 ## Build Setup
 

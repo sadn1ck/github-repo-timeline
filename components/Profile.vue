@@ -18,7 +18,6 @@
         <div class="my-auto text-xl">
           Public Repos: {{ repoDetails.length }}
         </div>
-        <div class="my-auto text-xl">Followers: {{ followerDetails }}</div>
       </div>
     </div>
     <Repos :repodetails="repoDetails" />
@@ -56,16 +55,6 @@ export default {
         console.log(this.repoDetails)
         this.showdetails = true
         // console.log(response)
-        this.getFollowers()
-      })
-    },
-    async getFollowers() {
-      const followersUrl = this.userdetails.followers_url
-      const data = await fetch(followersUrl)
-      data.json().then((response) => {
-        this.followerDetails = response.length
-        // console.log(this.followerDetails)
-        this.showdetails = true
       })
     },
   },

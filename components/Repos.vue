@@ -1,9 +1,9 @@
 <template>
-  <section class="text-gray-700 body-font py-16">
+  <section class="text-gray-700 body-font py-16 md:pl-32">
     <div
       v-for="(repo, i) in repodetails"
       :key="i"
-      class="container px-5 mx-auto flex flex-wrap"
+      class="container sm:px-0 md:px-5 mx-auto flex flex-wrap"
     >
       <div class="flex relative pb-10 sm:items-center">
         <div
@@ -22,14 +22,20 @@
           <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
             <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
               <a :href="repodetails[i].html_url" target="_blank">
-                {{ repodetails[i].full_name }}</a
-              >
+                {{ repodetails[i].name }}
+              </a>
+              <small v-if="repodetails[i].fork"> (fork) </small>
             </h2>
             <p class="leading-relaxed">
               {{ repodetails[i].description }}
             </p>
             <p class="py-2">
-              {{ new Date(repodetails[i].created_at).toString('dd-mm-YYYY') }}
+              <b>Created on:</b>
+              {{ new Date(repodetails[i].created_at).toDateString() }}
+            </p>
+            <p class="py-2">
+              <b>Updated on:</b>
+              {{ new Date(repodetails[i].updated_at).toDateString() }}
             </p>
           </div>
         </div>
