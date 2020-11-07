@@ -2,26 +2,26 @@
   <div class="md:px-32 lg:px-64 sticky top-0 z-50 nav">
     <div class="grid grid-cols-4 justify-items-auto py-5">
       <div
-        @click="$colorMode.preference = 'system'"
         class="flex justify-center items-center"
+        @click="$colorMode.preference = 'system'"
       >
         <IconSystem />
       </div>
       <div
-        @click="$colorMode.preference = 'light'"
         class="flex justify-center items-center"
+        @click="$colorMode.preference = 'light'"
       >
         <IconLight />
       </div>
       <div
-        @click="$colorMode.preference = 'dark'"
         class="flex justify-center items-center"
+        @click="$colorMode.preference = 'dark'"
       >
         <IconDark />
       </div>
       <div
-        @click="$colorMode.preference = 'sepia'"
         class="flex justify-center items-center"
+        @click="$colorMode.preference = 'sepia'"
       >
         <IconSepia />
       </div>

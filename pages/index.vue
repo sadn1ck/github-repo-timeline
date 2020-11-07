@@ -67,7 +67,6 @@ export default {
       this.userdetails = {}
       const data = await fetch(`https://api.github.com/users/${this.username}`)
       data.json().then((response) => {
-        console.log(response)
         if (!(response.message === 'Not Found')) {
           this.receiveddata = true
           this.userdetails = response

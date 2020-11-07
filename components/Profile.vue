@@ -9,7 +9,7 @@
           @load="getRepos"
         />
       </div>
-      <div class="p-5 grid grid-cols-1 text-center" v-if="showdetails">
+      <div v-if="showdetails" class="p-5 grid grid-cols-1 text-center">
         <a class="my-auto" target="_blank" :href="userdetails.html_url">
           <span class="font-bold text-2xl"> {{ userdetails.login }}</span>
           <div class="text-md">({{ userdetails.name }})</div>
@@ -52,9 +52,7 @@ export default {
           (a, b) => new Date(a.created_at) - new Date(b.created_at)
         )
         this.repoDetails.reverse()
-        console.log(this.repoDetails)
         this.showdetails = true
-        // console.log(response)
       })
     },
   },

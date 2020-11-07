@@ -54,9 +54,6 @@ export default {
       },
     },
   },
-  mounted() {
-    console.log(this.repodetails)
-  },
 }
 </script>
 
