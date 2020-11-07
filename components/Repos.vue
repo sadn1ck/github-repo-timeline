@@ -1,7 +1,10 @@
 <template>
-  <section class="text-gray-700 body-font py-16 md:pl-32">
+  <section
+    v-if="finalRepos && finalRepos.length > 0"
+    class="text-gray-700 body-font py-16 md:pl-32"
+  >
     <div
-      v-for="(repo, i) in repodetails"
+      v-for="(repo, i) in finalRepos"
       :key="i"
       class="container sm:px-0 md:px-5 mx-auto flex flex-wrap"
     >
@@ -51,6 +54,30 @@ export default {
       default() {
         return []
       },
+    },
+    displayForks: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  data() {
+    return {
+      finalRepos: {
+        type: Array,
+        default() {
+          return []
+        },
+      },
+    }
+  },
+  watch: {
+    displayForks(newVal, oldVal) {
+      this.finalRepos = this.repodetails.filter(
+        (repo) => !repo.fork || repo.fork === this.displayForks
+      )
+    },
+    repodetails(newVal, oldVal) {
+      this.finalRepos = [...this.repodetails]
     },
   },
 }
