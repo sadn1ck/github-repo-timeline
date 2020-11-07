@@ -16,7 +16,7 @@
         </a>
       </div>
     </div>
-    <Repos :repodetails="repoDetails" />
+    <Repos :repodetails="repoDetails" :displayForks="showForks" />
   </div>
 </template>
 
@@ -51,11 +51,7 @@ export default {
         const temp = response.sort(
           (a, b) => new Date(a.created_at) - new Date(b.created_at)
         )
-        if (!this.showForks) {
-          this.repoDetails = temp.filter((repo) => repo.fork === false)
-        } else {
-          this.repoDetails = temp
-        }
+        this.repoDetails = temp
         this.repoDetails.reverse()
         this.showdetails = true
       })

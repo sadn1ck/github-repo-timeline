@@ -18,13 +18,25 @@
             placeholder="GitHub username, for eg., torvalds"
           />
         </div>
-        <div class="text-lg text-center">
-          <input
-            class="mr-2 leading-tight"
-            type="checkbox"
-            v-model="showForks"
-          />
-          <span class=""> Display forks </span>
+        <div class="text-lg w-full flex justify-center">
+          <div class="flex">
+            <div
+              class="mr-4 bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center focus-within:border-blue-500"
+            >
+              <input
+                type="checkbox"
+                class="opacity-0 absolute"
+                v-model="showForks"
+              />
+              <svg
+                class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none"
+                viewBox="0 0 20 20"
+              >
+                <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+              </svg>
+            </div>
+            <span class=""> Display forks </span>
+          </div>
         </div>
         <div class="force-center p-5">
           <button
@@ -46,7 +58,7 @@
       </div>
     </div>
     <div v-if="receiveddata">
-      <Profile :userdetails="userdetails" :showForks="showForks" />
+      <Profile :userdetails="userdetails" :show-forks="showForks" />
     </div>
   </div>
 </template>
@@ -97,5 +109,8 @@ export default {
 .force-center {
   display: grid;
   place-items: center;
+}
+input:checked + svg {
+  display: block;
 }
 </style>
