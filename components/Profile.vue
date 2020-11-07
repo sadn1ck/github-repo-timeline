@@ -11,13 +11,9 @@
       </div>
       <div v-if="showdetails" class="p-5 grid grid-cols-1 text-center">
         <a class="my-auto" target="_blank" :href="userdetails.html_url">
-          <span class="font-bold text-2xl"> {{ userdetails.login }}</span>
-          <div class="text-md">({{ userdetails.name }})</div>
+          <span class="font-bold text-4xl"> {{ userdetails.login }}</span>
+          <div class="text-xl">({{ userdetails.name }})</div>
         </a>
-        <div class="my-auto text-xl"></div>
-        <div class="my-auto text-xl">
-          Public Repos: {{ repoDetails.length }}
-        </div>
       </div>
     </div>
     <Repos :repodetails="repoDetails" />
@@ -35,6 +31,10 @@ export default {
         return {}
       },
     },
+    showForks: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -48,9 +48,14 @@ export default {
       const repoUrl = this.userdetails.repos_url
       const data = await fetch(repoUrl)
       data.json().then((response) => {
-        this.repoDetails = response.sort(
+        const temp = response.sort(
           (a, b) => new Date(a.created_at) - new Date(b.created_at)
         )
+        if (!this.showForks) {
+          this.repoDetails = temp.filter((repo) => repo.fork === false)
+        } else {
+          this.repoDetails = temp
+        }
         this.repoDetails.reverse()
         this.showdetails = true
       })

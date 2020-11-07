@@ -17,25 +17,24 @@
           {{ i + 1 }}
         </div>
         <div
-          class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+          class="flex-grow md:pl-16 pl-10 flex sm:items-center items-start flex-col sm:flex-row"
         >
           <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
             <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-              <a :href="repodetails[i].html_url" target="_blank">
-                {{ repodetails[i].name }}
+              <a :href="repo.html_url" target="_blank">
+                {{ repo.name }}
               </a>
-              <small v-if="repodetails[i].fork"> (fork) </small>
             </h2>
             <p class="leading-relaxed">
-              {{ repodetails[i].description }}
+              {{ repo.description }}
             </p>
             <p class="py-2">
               <b>Created on:</b>
-              {{ new Date(repodetails[i].created_at).toDateString() }}
+              {{ new Date(repo.created_at).toDateString() }}
             </p>
             <p class="py-2">
               <b>Updated on:</b>
-              {{ new Date(repodetails[i].updated_at).toDateString() }}
+              {{ new Date(repo.updated_at).toDateString() }}
             </p>
           </div>
         </div>

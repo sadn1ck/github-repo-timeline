@@ -15,8 +15,16 @@
             v-model="username"
             type="text"
             class="relative outline-none text-gray-900 py-5 px-5 rounded-xl w-full md:w-2/3 shadow focus:shadow-2xl text-base focus:outline-none transition duration-200"
-            placeholder="Eg., torvalds"
+            placeholder="GitHub username, for eg., torvalds"
           />
+        </div>
+        <div class="text-lg text-center">
+          <input
+            class="mr-2 leading-tight"
+            type="checkbox"
+            v-model="showForks"
+          />
+          <span class=""> Display forks </span>
         </div>
         <div class="force-center p-5">
           <button
@@ -38,7 +46,7 @@
       </div>
     </div>
     <div v-if="receiveddata">
-      <Profile :userdetails="userdetails" />
+      <Profile :userdetails="userdetails" :showForks="showForks" />
     </div>
   </div>
 </template>
@@ -56,6 +64,7 @@ export default {
       invaliduser: false,
       username: '',
       userdetails: {},
+      showForks: true,
     }
   },
   methods: {
